@@ -29,12 +29,46 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.mapTimer = new System.Windows.Forms.Timer(this.components);
+            this.mapPanel = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // mapTimer
+            // 
+            this.mapTimer.Enabled = true;
+            this.mapTimer.Interval = 1;
+            this.mapTimer.Tick += new System.EventHandler(this.mapTimer_Tick);
+            // 
+            // mapPanel
+            // 
+            this.mapPanel.AutoSize = true;
+            this.mapPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapPanel.Enabled = false;
+            this.mapPanel.Location = new System.Drawing.Point(0, 0);
+            this.mapPanel.Name = "mapPanel";
+            this.mapPanel.Size = new System.Drawing.Size(620, 620);
+            this.mapPanel.TabIndex = 1;
+            this.mapPanel.Visible = false;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(620, 620);
+            this.Controls.Add(this.mapPanel);
+            this.DoubleBuffered = true;
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+        private System.Windows.Forms.Timer mapTimer;
+        private System.Windows.Forms.Panel mapPanel;
     }
 }
 
