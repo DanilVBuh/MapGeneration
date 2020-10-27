@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapGeneration.Iterate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,16 @@ using System.Threading.Tasks;
 
 namespace MapGeneration.Models.Iterators
 {
-    class MountainIterator
+    public class MountainIterator : Iterator
     {
+        public Tile GetNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasMore()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

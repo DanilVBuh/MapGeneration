@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MapGeneration.Models
 {
-    class Biome
+    public abstract class Biome : Area
     {
+
     }
 }

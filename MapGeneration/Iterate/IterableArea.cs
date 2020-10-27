@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapGeneration.Iterator
+namespace MapGeneration.Iterate
 {
-    interface IterableArea
+    public interface IterableArea
     {
+        public Iterator CreateIterator();
     }
 }

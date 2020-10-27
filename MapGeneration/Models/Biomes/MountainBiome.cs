@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MapGeneration.Models.Biomes
 {
-    class MountainBiome
+    public class MountainBiome : Biome
     {
+
     }
 }

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace MapGeneration
 {
-    public partial class Form1 : Form
+    public partial class MapForm : System.Windows.Forms.Form
     {
         Graphics g;
         int x, y, w = 5;
         Random r;
 
-        public Form1()
+        public MapForm()
         {
             InitializeComponent();
             r = new Random();
