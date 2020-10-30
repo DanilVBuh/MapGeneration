@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,8 +68,10 @@
     <Compile Include="Models\Generators\TempGenerator.cs" />
     <Compile Include="Models\Iterators\AreaIterator.cs" />
     <Compile Include="Models\Iterators\MountainIterator.cs" />
+    <Compile Include="Models\Iterators\TempIterator.cs" />
     <Compile Include="Models\Map.cs" />
     <Compile Include="Models\Tile.cs" />
+    <Compile Include="Noise2d.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MapForm.resx">

@@ -36,7 +36,6 @@
             // mapTimer
             // 
             this.mapTimer.Enabled = true;
-            this.mapTimer.Interval = 1;
             this.mapTimer.Tick += new System.EventHandler(this.mapTimer_Tick);
             // 
             // mapPanel
@@ -51,7 +50,7 @@
             this.mapPanel.TabIndex = 1;
             this.mapPanel.Visible = false;
             // 
-            // Form1
+            // MapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -59,7 +58,7 @@
             this.ClientSize = new System.Drawing.Size(620, 620);
             this.Controls.Add(this.mapPanel);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.Name = "MapForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

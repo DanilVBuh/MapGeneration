@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapGeneration.Iterate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,9 @@ namespace MapGeneration.Models.Biomes
 {
     public class MountainBiome : Biome
     {
-
+        public override Iterator CreateIterator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

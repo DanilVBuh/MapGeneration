@@ -11,9 +11,6 @@ namespace MapGeneration.Models
     {
         public ICollection<Tile> Tiles { get; set; }
 
-        public Iterator CreateIterator()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract Iterator CreateIterator();
     }
 }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace MapGeneration.Models.Iterators
 {
-    public class AreaIterator : Iterator
+    public class TempIterator : Iterator
     {
         private Map Area { get; set; }
         private Tile CurrentTile { get; set; }
         private int CurrentIterate { get; set; } = -1;
 
-        public AreaIterator(Map area)
+        public TempIterator(Map area)
         {
             this.Area = area;
         }
