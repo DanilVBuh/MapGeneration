@@ -15,5 +15,13 @@ namespace MapGeneration.Models
         public float Height { get; set; }
         public float Temp { get; set; }
         public Color Colour { get; set; }
+        public Biome Biome { get; set; }
+
+        public bool IsNearWith(Tile tile)
+        {
+            if ((Math.Abs(this.X - tile.X) == 1 && this.Y == tile.Y) || (Math.Abs(this.Y - tile.Y) == 1 && this.X == tile.X))
+                return true;
+            return false;
+        }
     }
 }

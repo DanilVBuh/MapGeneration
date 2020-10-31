@@ -36,6 +36,7 @@
             // mapTimer
             // 
             this.mapTimer.Enabled = true;
+            this.mapTimer.Interval = 10;
             this.mapTimer.Tick += new System.EventHandler(this.mapTimer_Tick);
             // 
             // mapPanel

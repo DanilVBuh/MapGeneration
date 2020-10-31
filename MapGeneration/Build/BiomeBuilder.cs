@@ -9,7 +9,17 @@ namespace MapGeneration.Build
 {
     public abstract class BiomeBuilder
     {
+        protected Map MapContext { get; set; }
         protected Biome Biome { get; set; }
+        protected Random Random { get; set; }
+
+        private bool IsBuilt = false;
+
+        protected BiomeBuilder()
+        {
+            //this.MapContext = Map.GetInstance();
+            this.Random = new Random();
+        }
 
         public abstract void Reset();
         protected abstract void BuildCold();
@@ -18,8 +28,45 @@ namespace MapGeneration.Build
         protected abstract void UpdateCold();
         protected abstract void UpdateNormal();
         protected abstract void UpdateHot();
-        public abstract void ActCold();
-        public abstract void ActNormal();
-        public abstract void ActHot();
+        public virtual void ActCold()
+        {
+            if (IsBuilt)
+            {
+                UpdateCold();
+            }
+            else
+            {
+                BuildCold();
+            }
+        }
+        public virtual void ActNormal()
+        {
+            if (IsBuilt)
+            {
+                UpdateNormal();
+            }
+            else
+            {
+                BuildNormal();
+            }
+        }
+        public virtual void ActHot()
+        {
+            if (IsBuilt)
+            {
+                UpdateHot();
+            }
+            else
+            {
+                BuildHot();
+            }
+        }
+
+
+
+        public float GetTemp()
+        {
+            return Biome.GetAverageTemp();
+        }
     }
 }

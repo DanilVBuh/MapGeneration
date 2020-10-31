@@ -67,6 +67,7 @@
     <Compile Include="Models\Generators\MountainGenerator.cs" />
     <Compile Include="Models\Generators\TempGenerator.cs" />
     <Compile Include="Models\Iterators\AreaIterator.cs" />
+    <Compile Include="Models\Iterators\EmptinessIterator.cs" />
     <Compile Include="Models\Iterators\MountainIterator.cs" />
     <Compile Include="Models\Iterators\TempIterator.cs" />
     <Compile Include="Models\Map.cs" />

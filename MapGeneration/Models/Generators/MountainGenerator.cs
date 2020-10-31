@@ -15,30 +15,35 @@ namespace MapGeneration.Models.Generators
         {
         }
 
-        public override void Execute(Map map)
+        /*public override void Execute(Map map)
         {
-            var iterator = map.CreateTempIterator();
-            while (iterator.HasMore())
+            this.Generate();
+        }
+
+        public override void Generate()
+        {
+            if (Generated)
             {
-                var tile = iterator.GetNext();
-                if (tile.Temp < 15)
+                float temp = Builder.GetTemp();
+                if (temp < COLD_TEMP)
                 {
-                    tile.Colour = Color.Blue;
+                    Builder.ActCold();
                 }
-                else if (tile.Temp > 25)
+                else if (temp > HOT_TEMP)
                 {
-                    tile.Colour = Color.Red;
+                    Builder.ActHot();
                 }
                 else
                 {
-                    tile.Colour = Color.Green;
+                    Builder.ActNormal();
                 }
             }
-        }
-
-        public override void Generate(float averageTemp)
-        {
-            throw new NotImplementedException();
-        }
+            else
+            {
+                Builder.Reset();
+                Generated = !Generated;
+                this.Generate();
+            }
+        }*/
     }
 }

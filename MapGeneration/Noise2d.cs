@@ -102,5 +102,56 @@ namespace MapGeneration
             return Math.Max(Math.Min(total, 1f), -1f);
         }
 
+
+        public static float[] GenerateNoiseMap(int width, int height, int octaves)
+        {
+            float[] data = new float[width * height];
+
+            /// track min and max noise value. Used to normalize the result to the 0 to 1.0 range.
+            float min = float.MaxValue;
+            float max = float.MinValue;
+
+            /// rebuild the permutation table to get a different noise pattern. 
+            /// Leave this out if you want to play with changing the number of octaves while 
+            /// maintaining the same overall pattern.
+            Noise2d.Reseed();
+
+            float frequency = 0.5f;
+            float amplitude = 1f;
+            frequency = 5f;
+            amplitude = 1f;
+
+            for (var octave = 0; octave < octaves; octave++)
+            {
+                /// parallel loop - easy and fast.
+                Parallel.For(0
+                    , width * height
+                    , (offset) =>
+                    {
+                        int i = offset % width;
+                        int j = offset / width;
+                        float noise = Noise2d.Noise(i * frequency * 1f / width, j * frequency * 1f / height);
+                        noise = data[j * width + i] += noise * amplitude;
+
+                        min = Math.Min(min, noise);
+                        max = Math.Max(max, noise);
+
+                    }
+                );
+
+                frequency *= 2;
+                amplitude /= 2;
+            }
+
+            float[] result = data.Select(
+                (f) =>
+                {
+                    float norm = (f - min) / (max - min);
+                    return norm;
+                }
+            ).ToArray();
+
+            return result;
+        }
     }
 }

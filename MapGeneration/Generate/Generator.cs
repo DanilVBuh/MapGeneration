@@ -10,14 +10,46 @@ namespace MapGeneration.Generate
 {
     public abstract class Generator : GeneratorStrategy
     {
-        private BiomeBuilder Builder { get; set; }
+        protected const float COLD_TEMP = 15f;
+        protected const float HOT_TEMP = 25f;
+        protected bool Generated { get; set; }
+        protected BiomeBuilder Builder { get; set; }
 
         public Generator(BiomeBuilder builder)
         {
+            this.Generated = false;
             this.Builder = builder;
         }
 
-        public abstract void Generate(float averageTemp);
-        public abstract void Execute(Map map);
+        public virtual void Generate()
+        {
+            if (Generated)
+            {
+                float temp = Builder.GetTemp();
+                if (temp < COLD_TEMP)
+                {
+                    Builder.ActCold();
+                }
+                else if (temp > HOT_TEMP)
+                {
+                    Builder.ActHot();
+                }
+                else
+                {
+                    Builder.ActNormal();
+                }
+            }
+            else
+            {
+                Generated = !Generated;
+                Builder.Reset();
+                this.Generate();
+            }
+        }
+
+        public virtual void Execute(Map map)
+        {
+            this.Generate();
+        }
     }
 }

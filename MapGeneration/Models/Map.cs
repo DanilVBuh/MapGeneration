@@ -31,16 +31,16 @@ namespace MapGeneration.Models
             this.Biomes = new Collection<Biome>();
             this.Generators = new Collection<GeneratorStrategy>();
             this.Generate();
-            this.Update();
+            //this.Update();
         }
 
         public static Map GetInstance()
         {
-            if (Map.Instance == null)
+            if (Instance == null)
             {
-                Map.Instance = new Map();
+                Instance = new Map();
             }
-            return Map.Instance;
+            return Instance;
         }
 
         public void Generate()
@@ -53,11 +53,14 @@ namespace MapGeneration.Models
                     {
                         X = x,
                         Y = y,
-                        Colour = Color.White
+                        Colour = Color.DarkGreen
                     });
                 }
             }
             this.Generators.Add(new TempGenerator());
+            this.Generators.Add(new MountainGenerator(new MountainBuilder()));
+            this.Generators.Add(new MountainGenerator(new MountainBuilder()));
+            this.Generators.Add(new MountainGenerator(new MountainBuilder()));
             this.Generators.Add(new MountainGenerator(new MountainBuilder()));
         }
 
@@ -85,14 +88,36 @@ namespace MapGeneration.Models
             while (iterator.HasMore())
             {
                 Tile tile = iterator.GetNext();
+                if (tile.Biome != null)
+                {
+                    SolidBrush back = new SolidBrush(tile.Biome.BiomeBackColor);
+                    g.FillRectangle(back, tile.X * tileWidth, tile.Y * tileWidth, tileWidth, tileWidth);
+                }
                 SolidBrush b = new SolidBrush(tile.Colour);
                 g.FillRectangle(b, tile.X * tileWidth, tile.Y * tileWidth, tileWidth, tileWidth);
             }
+            /*iterator = CreateIterator();
+            while (iterator.HasMore())
+            {
+                Tile tile = iterator.GetNext();
+                if (tile.Biome != null)
+                {
+                    SolidBrush back = new SolidBrush(tile.Biome.BiomeBackColor);
+                    g.FillRectangle(back, tile.X * tileWidth, tile.Y * tileWidth, tileWidth, tileWidth);
+                }
+                SolidBrush b = new SolidBrush(tile.Colour);
+                g.FillRectangle(b, tile.X * tileWidth, tile.Y * tileWidth, tileWidth, tileWidth);
+            }*/
         }
 
         public Iterator CreateTempIterator()
         {
             return new TempIterator(this);
+        }
+
+        public Iterator CreateEmptinessIterator()
+        {
+            return new EmptinessIterator(this);
         }
 
         public override Iterator CreateIterator()
