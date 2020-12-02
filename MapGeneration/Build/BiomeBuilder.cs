@@ -37,6 +37,7 @@ namespace MapGeneration.Build
             else
             {
                 BuildCold();
+                IsBuilt = true;
             }
         }
         public virtual void ActNormal()
@@ -48,6 +49,7 @@ namespace MapGeneration.Build
             else
             {
                 BuildNormal();
+                IsBuilt = true;
             }
         }
         public virtual void ActHot()
@@ -59,6 +61,7 @@ namespace MapGeneration.Build
             else
             {
                 BuildHot();
+                IsBuilt = true;
             }
         }
 

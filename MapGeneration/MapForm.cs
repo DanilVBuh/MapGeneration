@@ -15,7 +15,7 @@ namespace MapGeneration
     {
         Map MainMap;
         Graphics g;
-        int x, y, w = 5;
+        int x, y, w = 6;
         Random r;
 
         public MapForm()

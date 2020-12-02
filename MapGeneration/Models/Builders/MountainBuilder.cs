@@ -29,13 +29,13 @@ namespace MapGeneration.Models.Builders
 
         protected override void BuildCold()
         {
-            Biome.BiomeBackColor = Color.FromArgb(190, 190, 190);
-            Biome.BiomeColor = Color.FromArgb(60, 60, 60);
+            Biome.BiomeBackColor = Color.Black;
+            Biome.BiomeColor = Color.White;
             SetHeight();
             //float h = Biome.Tiles.Select(t => t.Height).FirstOrDefault();
             foreach (Tile t in Biome.Tiles)
             {
-                int alpha = 255 - (int)(255 * (t.Height - MinH) / (MaxH - MinH));
+                int alpha = (int)(255 * Math.Pow((t.Height - MinH) / (MaxH - MinH), 2));
                 t.Colour = Color.FromArgb(alpha, Biome.BiomeColor);
             }
         }
@@ -52,17 +52,22 @@ namespace MapGeneration.Models.Builders
 
         protected override void UpdateCold()
         {
-            BuildCold();
+            Nothing();
         }
 
         protected override void UpdateHot()
         {
-            BuildCold();
+            Nothing();
         }
 
         protected override void UpdateNormal()
         {
-            BuildCold();
+            Nothing();
+        }
+
+        private void Nothing()
+        {
+
         }
 
         private void SetHeight()

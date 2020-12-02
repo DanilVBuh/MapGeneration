@@ -44,8 +44,18 @@ namespace MapGeneration.Models.Iterators
                 }
                 if (Edge.Count != 0)
                 {
-                    int randTile = Random.Next(0, Edge.Count);
-                    tile = Edge.ElementAt(randTile);
+                    double prob = Random.NextDouble();
+                    int randTile;
+                    if (prob < 0.5)
+                    {
+                        randTile = Random.Next(0, Edge.Count);
+                        tile = Edge.ElementAt(randTile);
+                    }
+                    else
+                    {
+                        randTile = Random.Next(0, Edge.Count);
+                        tile = Edge.ElementAt(randTile);
+                    }
                     MoveTile(tile);
                     CurrentCount++;
                     if (!HasMore())

@@ -60,8 +60,6 @@ namespace MapGeneration.Models
             this.Generators.Add(new TempGenerator());
             this.Generators.Add(new MountainGenerator(new MountainBuilder()));
             this.Generators.Add(new MountainGenerator(new MountainBuilder()));
-            this.Generators.Add(new MountainGenerator(new MountainBuilder()));
-            this.Generators.Add(new MountainGenerator(new MountainBuilder()));
         }
 
         public void Update()
